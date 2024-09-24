@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>châu văn nguyên</title>
+</head>
+<body>
+    <script>
+      let userName = prompt("Who's there?",'');
+      if (userName == 'Admin') {
+        let pass = prompt('Password', '');
+        if (pass == 'TheMaster') {
+            alert('Canceled.');
+        } else {
+          alert('Wrong passwword');
+        }
+      } else if (userName == null){
+        alert('canceled');
+      } else {
+        alert("I don't know you");
+      }
+    </script>
+</body>
+</html>
