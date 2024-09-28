@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>text</title>
+</head>
+<body>
+        <script>
+          <!-- kiểm tra 1 số bất kỳ có phải là số hoàn hảo hay không -->
+          // tổng các ước bằng chính nó
+          // 6: 1,2,3
+
+          let a = +prompt("Nhập số cần kiểm tra: ");
+          while (!isNaN(a) || a <= 0)  {
+              a = +prompt("bạn nhập không phải là số hoặc là 1 số âm");
+          }
+          alert(a)
+
+          let sum = 0;
+          for (let i = 1; i < a; i++) {
+              if (a % i === 0) {
+                  sum = sum + i;
+              }
+          }
+
+          it(sum === a) {
+              alert(`${a} là số hoàn hảo`)
+          }
+        </script>
+</body>
+</html>
