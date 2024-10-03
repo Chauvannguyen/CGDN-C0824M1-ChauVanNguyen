@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            // // Bài 1: Nhập vào hai số a và b, và kiểm tra xem a có chia hết cho b hay không
+            // function checkDivisibility() {
+            //     // Nhập vào hai số a và b
+            //     const a = parseFloat(prompt("Nhập số a:"));
+            //     const b = parseFloat(prompt("Nhập số b:"));
+            //
+            //     // Kiểm tra nếu b khác 0 để tránh chia cho 0
+            //     if (b === 0) {
+            //         document.write("Không thể chia cho 0.");
+            //     } else {
+            //         // Kiểm tra xem a có chia hết cho b hay không
+            //         if (a % b === 0) {
+            //             document.write(`${a} chia hết cho ${b}.`);
+            //         } else {
+            //             document.write(`${a} không chia hết cho ${b}.`);
+            //         }
+            //     }
+            // }
+            // // Gọi hàm để thực hiện
+            // checkDivisibility();
+            //
+            // // Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10.
+            // function checkAgeForGrade10() {
+            //     const age = parseInt(prompt("Nhập tuổi:"));
+            //     if (age < 15) {
+            //         document.write(`${age} không đủ điều kiện vào lớp 10.`);
+            //     } else {
+            //         document.write(`${age} đủ điều kiện vào lớp 10.`);
+            //     }
+            // }
+            // checkAgeForGrade10();
+            //
+            // // Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn 0
+            // function checkInteger() {
+            //     const number = parseInt(prompt("nhập một số nguyên:"));
+            //
+            //     if (number > 0) {
+            //         document.write("số này lớn hơn 0.");
+            //     } else if (number < 0) {
+            //         document.write("số này nhỏ hơn 0.");
+            //     } else {
+            //         document.write("số này bằng 0.");
+            //     }
+            // }
+            // checkInteger();
+            //
+            // // Bài 4: Nhập 3 số nguyên và tìm giá trị lớn nhất của ba số nguyên đó
+            // function findMaxOfThree() {
+            //     const num1 = parseInt(prompt("Nhập số thứ nhất:"));
+            //     const num2 = parseInt(prompt("Nhập số thứ hai:"));
+            //     const num3 = parseInt(prompt("Nhập số thứ ba:"));
+            //
+            //     let max = num1; // gán cho num1 là lớn nhất
+            //     if (num2 > max) {
+            //         max = num2;
+            //     }
+            //     if (num3 > max) {
+            //         max = num3;
+            //     }
+            //     document.write(`giá trị lớn nhất là : ${max}`);
+            // }
+            // findMaxOfThree();
+            //
+            // // Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ
+            // function classifyStudent() {
+            //     const testScore = parseFloat(prompt("Nhập điểm bài kiểm tra:"));
+            //     const midTermScore = parseFloat(prompt("Nhập điểm thi giữa kỳ:"));
+            //     const finalScore = parseFloat(prompt("Nhập điểm thi cuối kỳ:"));
+            //
+            //     const average = (testScore + midTermScore + finalScore) / 3;
+            //     if (average >= 8) {
+            //         document.write("Học lực giỏi.");
+            //     } else if (average >= 6.5) {
+            //         document.write("Học lực loại khá.");
+            //     } else if (average >= 5) {
+            //         document.write("Học lực loại Trung Bình.")
+            //     } else {
+            //         document.write("Học lực loại yếu");
+            //     }
+            // }
+            // classifyStudent();
+            //
+            // // Bài 6: Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng
+            // function calculateCommission() {
+            //     const sales = parseFloat(prompt("Nhập doanh số bán hàng:"));
+            //     let commission;
+            //
+            //     if (sales <= 1000000) {
+            //         commission = sales * 0.1; // 10%
+            //     } else if (sales <= 5000000) {
+            //         commission = sales * 0.15; // 15%
+            //     } else {
+            //         commission = sales * 0.2; // 20%
+            //     }
+            //
+            //     document.write(`Hoa hồng nhận được là: ${commission}`);
+            // }
+            // calculateCommission();
+            //
+            // Bài 7: Tính cước điện thoại cho một hộ gia đình với các thông số đã cho
+            // function calculatePhoneBill() {
+            //     const callMinutes = parseInt(prompt("Nhập số phút gọi:"));
+            //     let bill;
+            //
+            //     if (callMinutes <= 50) {
+            //         bill = callMinutes * 2000; // 2000vnd/phút
+            //     } else {
+            //         bill = 50 * 2000 + (callMinutes - 50) * 1500; // 2000 cho 50' đầu, 1500 cho những phút tiếp theo
+            //     }
+            //     document.write(`cước điện thoại phải trả là : ${bill} VNĐ`);
+            // }
+            // calculatePhoneBill();
+        </script>
+</body>
+</html>
