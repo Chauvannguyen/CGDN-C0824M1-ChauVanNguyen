@@ -32,23 +32,48 @@
             // b2: với mỗi số chúng ta kiểm tra số đó có phải là số nguyên tố
             // b2: đếm nếu nó là số nguyên tố
             // b4: đủ 100 tì dừng
-            let num = 2;
-            let count = 0;
-            while (count < 100) {
-                let isPrime = true;
-                for (let i = 2; i <= Math.sqrt(num); i++) {
-                    if (num % i === 0) {
-                        isPrime = false;
-                        break;
+            // let num = 2;
+            // let count = 0;
+            // while (count < 100) {
+            //     let isPrime = true;
+            //     for (let i = 2; i <= Math.sqrt(num); i++) {
+            //         if (num % i === 0) {
+            //             isPrime = false;
+            //             break;
+            //         }
+            //     }
+            //
+            //     if (isPrime) {
+            //         document.write(`${num}là số nguyên tố`)
+            //         count++;
+            //     }
+            //     num++;
+            // }
+
+            function getPrimes(n) {
+                let primes = [];
+                let count = 0;
+                let num = 2; // Bắt đầu kiểm tra từ 2
+
+                while (count < n) {
+                    if (isPrime(num)) {
+                        primes.push(num);
+                        count++;
                     }
+                    num++;
                 }
 
-                if (isPrime) {
-                    document.write(`${num}là số nguyên tố`)
-                    count++;
-                }
-                num++;
+                return primes;
             }
+
+            let input = parseInt(prompt("Nhập số lượng số nguyên tố bạn muốn: "));
+            if (input > 0) {
+                let primes = getPrimes(input);
+                alert(`Các số nguyên tố đầu tiên: ${primes.join(", ")}`);
+            } else {
+                alert("Vui lòng nhập số nguyên dương.");
+            }
+        getPrimes();
 
         </script>
 </body>

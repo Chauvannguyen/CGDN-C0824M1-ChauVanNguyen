@@ -3,8 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <style>
+    table {
+      width: 50%;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
+    <h1 style="text-align: center;">Bảng cửu chuơng</h1>
+    <table id="multiplication-table"></table>
+  <script>
+    const table = document.getElementById('multiplication-table');
 
+    let headerRow = document.createElement('tr');
+    headerRow.innerHTML = '<th>x</th>'
+    for (let i = 1; i <= 10; i++) {
+      headerRow.innerHTML += '<th>${i}</th>';
+    }
+    table.appendChild(headerRow);
+    for (let i = 1; i <= 10; i++) {
+      let row = document.createElement('tr');
+      row.innerHTML = '<th>${i}</th>';
+      for (let j = 1; j <= 10; j++) {
+        row.innerHTML += '<td>${i * j}</td>';
+      }
+      table.appendChild(row);
+    }
+  </script>
 </body>
 </html>

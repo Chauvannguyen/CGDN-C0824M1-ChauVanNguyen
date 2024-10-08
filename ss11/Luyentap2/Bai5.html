@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      let principal = parseFloat(prompt("Nhập số tiền ban đầu: "));
+      let months = parseFloat(prompt("Nhập số tháng cho vay: "));
+      let interestRate = parseFloat(prompt("Nhập lãi xuất hàng tháng (phần trăm):")) / 100;
+
+      let totalAmount = principal;
+
+      for (let i = 0; i < months; i++) {
+        totalAmount += totalAmount * interestRate;
+      }
+      document.write(`Số tiền sau ${months} tháng là: ${totalAmount.toFixed(2)}`);
+    </script>
+</body>
+</html>

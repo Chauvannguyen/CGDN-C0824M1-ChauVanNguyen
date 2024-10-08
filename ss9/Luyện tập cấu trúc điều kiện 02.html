@@ -6,58 +6,135 @@
 </head>
 <body>
         <script>
-            // // Bài 1: Chuyển từ độ C sang độ F.
-            // function celsiusToFahrenheit() {
-            //     const celsius = parseFloat(prompt("Nhập độ C:"));
-            //     const fahrenheit = (celsius * 9/5) + 32;
-            //     document.write(`${celsius} C = ${fahrenheit} F`);
-            // }
-            // celsiusToFahrenheit();
-
-            // // Bài 2: Chuyển từ mét sang feet:
-            // function metersToFeet() {
-            //     const meters = parseFloat(prompt("nhập số mét:"));
-            //     const feet = meters * 3.2808;
-            //     document.write(`${meters} m = ${feet} ft`);
-            // }
-            //  metersToFeet();
-
-            // // Bài 3: Tính diện tích hình vuông khi biết cạnh a.
-            // function squareArea() {
-            //     const a = parseFloat(prompt("Nhập cạnh a:"));
-            //     const area = a * a;
-            //     document.write(`diện tích hình vuông là: ${area}`);
-            // }
-            // squareArea();
-
-            // // Bài 4: Tính diện tích hình chữ nhật khi biết 02 cạnh a, b.
-            // function rectangleArea() {
-            //     const a = parseFloat(prompt("Nhập cạnh a:"));
-            //     const b = parseFloat(prompt("Nhập cạnh b:"));
-            //     const area = a * b
-            //     document.write(`diện tích hình chữ nhật là: ${area}`);
-            // }
-            // rectangleArea();
-
-            // // Bài 5: Tính diện tích tam giác vuông khi biết 02 cạnh kề a, b.
-            // function rightTriangleArea() {
-            //     const a = parseFloat(prompt("Nhập cạnh kề a:"));
-            //     const b = parseFloat(prompt("Nhập cạnh kề b:"));
-            //     const area = (a * b) / 2;
-            //     document.write(`Diện tích tam giác vuông là: ${area}`);
-            // }
-            // rightTriangleArea();
-
+            // Bài 1: Chuyển từ độ C sang độ F.
+            //     °C  x  9/5 + 32 = °F
+            let celsius = parseFloat(prompt("Nhập độ C: "));
+            let fahrenheit = celsius * 9 / 5 + 32;
+            alert(`${celsius}C = ${fahrenheit}F`);
+            // Bài 2: Chuyển từ mét sang feet:
+            //     ft =m * 3.2808
+            let meters = parseFloat(prompt("Nhập chhieeuf dài (m): "));
+            let feet = meters * 3.2888;
+            alert(`${meters}m = ${feet}ft`);
+            // Bài 3: Tính diện tích hình vuông khi biết cạnh a.
+            let a = parseFloat(prompt("Nhập độ dài cạnh a: "));
+            let areaSquare = a * a;
+            alert(`Diện tích hhinhf vuông là: ${areaSquare}`);
+            // Bài 4: Tính diện tích hình  chữ nhật khi biết 02 cạnh a, b.
+            let a = parseFloat(prompt("Nhập cạnh a: "));
+            let b = parseFloat(prompt("Nhập cạnh b: "));
+            let areaRectangle = a * b;
+            alert(`Diện tích hình chữ nhật là ${areaRectangle}`);
+            // Bài 5: Tính diện tích tam giác vuông khi biết 02 cạnh kề a, b.
+            let a = parseFloat(prompt("Nhập cạnh kề a: "));
+            let b = parseFloat(prompt("Nhập cạnh kề b: "));
+            let areaTriangle = (a * b)/2;
+            alert(`Diện tích tam giác vuông là: ${areaTriangle}`);
             // Bài 6: Giải phương trình bậc 1.
-
+            let a = parseFloat(prompt("Nhập a: "));
+            let b = parseFloat(prompt("Nhập b: "));
+            if ( a == 0) {
+                if ( b == 0) {
+                    alert("Phương trình có vô số nghiệm.")
+                } else {
+                    alert("Phương trình vô nghiệm.");
+                }
+            } else {
+                let x = -b/a;
+                alert(`Nghiệm của phương trình là: X = ${x}`);
+            }
             // Bài 7: Giải phương trình bậc 2.
+            let a = parseFloat(prompt("Nhập a: "));
+            let b = parseFloat(prompt("Nhập b: "));
+            let c = parseFloat(prompt("Nhập c: "));
+
+            if ( a === 0) {
+                if (b === 0) {
+                    if (c === 0) {
+                        alert("Phương trình có vô số nghiệm.");
+                    } else {
+                        alert("Phương trình vô nghiệm.");
+                    }
+                } else {
+                    let x = -c/b;
+                    alert(`Nghiệm cửa phương trình là: x = ${x}`);
+                }
+            } else {
+                let delta = b * b - 4 * a * c;
+                if (delta > 0) {
+                    let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                    let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                    alert(`có 2 nghiệm phân biệt là : x1 = ${x1} và x2 = ${x2}`)
+                } else if (delta === 0) {
+                    let x = -b / (2 * a);
+                    alert(`Có nghiệm kép: x = ${x}`);
+                } else {
+                    alert("Phương trình vô nghiệm.");
+                }
+            }
             // Bài 8: Kiểm tra xem một số nhập vào có phải là tuổi của một người không. Một số nguyên là tuổi của một người khi nhỏ 120 và lơn hơn 0.
+            let age = parseInt(prompt("Nhập tuổi: "), 10);
+            if (age > 0 && age < 120) {
+                alert("Đây là một tuổi hợp lệ.");
+            } else {
+                alert("Đây là tuổi không hợp lệ.");
+            }
             // Bài 9: Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác. Điều kiện để a,b,c là cạnh của một tam giác là:
+            // a,b,c > 0
+            // a + b > c
+            // b + c > a
+            // a + c > b
+            let a = parseFloat(prompt("Nhập cạnh a: "));
+            let b = parseFloat(prompt("Nhập cạnh b: "));
+            let c = parseFloat(prompt("Nhập cạnh c: "));
+
+            if (a > 0 && b > 0 && c > 0) {
+                if (a + b > c && b + c > a && a + c > b) {
+                    alert("a,b,c là cạnh của một tam giác.");
+                } else {
+                    alert("a,b,c không phải là cạnh của một tam giác.");
+                }
+            } else {
+                alert("Các cạnh phải lớn hơn 0.");
+            }
             // Bài 10: Viết chương trình tính giá điện.
+            let units = parseFloat(prompt("Nhập số điện tiêu thụ (kWh): "));
+            let cost;
+
+            if (units <= 50) {
+                cost = units * 1678;
+            } else if (units <= 100) {
+                cost = 50 * 1678 + (units - 50) * 1734;
+            } else if (units <= 150) {
+                cost = 50 * 1678 + 50 * 1734 + (units - 100) * 2014;
+            } else {
+                cost = 50 * 1678 + 50 * 1734 + 50 * 2014 + (units - 150) * 2536;
+            }
+            alert(`Tổng chi phí điện là: ${cost} VNĐ`);
             // Bài 11: Viết chương trình tính thuế thu nhập cá nhân.
+            let income = parseFloat(prompt("Nhập thhu nhập cá nhân (VNĐ): "));
+            let tax;
+
+            if (income <= 5000000) {
+                tax = 0;
+            } else if(income <= 10000000) {
+                tax = (income - 5000000) * 0.05;
+            } else if(income <= 18000000) {
+                tax = (5000000 * 0.05) + (income - 10000000) * 0.1;
+            } else {
+                tax = (5000000 * 0.05) + (8000000 * 0.1) + (income - 18000000) * 0.2;
+            }
+
+            alert(`Số thuế phải nộp là: ${tax} VNĐ`);
             // Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.
+            let principal = parseFloat(prompt("Nhập số tiền ban đầu: "));
+            let months = parseInt(prompt("Nhập số tháng cho vay: "), 10);
+            let monthIyInterestRate = parseFloat(prompt("Nhập lãi xuất ngân hàng tháng (%): ")) / 100;
 
+            let totalAmount = principal * Math.pow(1 + monthIyInterestRate, months);
+            let interest = totalAmount - principal;
 
+            alert(`Số tiền lãi là: ${interest.toFixed(2)} VNĐ`);
         </script>
 </body>
 </html>

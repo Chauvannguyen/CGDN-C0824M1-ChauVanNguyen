@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      function drawRectangleBorder(width, height) {
+        for (let i = 0; i < height; i++) {
+          let row = '';
+
+          for (let j = 0; j < width; j++) {
+            if ( i === 0 || i === height  - 1 || j === 0 || j === width - 1) {
+              row += '*';
+            } else {
+              row += ' ';
+            }
+          }
+
+          console.log(row);
+        }
+      }
+      drawRectangleBorder(10, 7);
+    </script>
+</body>
+</html>

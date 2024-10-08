@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      let n = 10; // số lượng muốn in
+      let fib = [0,1];
+
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i -1] + fib[i - 2];
+      }
+      document.write(fib.join(", "));
+    </script>
+</body>
+</html>

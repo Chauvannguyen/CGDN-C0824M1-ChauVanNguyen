@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      let height = 5;
+      console.log("Tam giác vuông ở dưới bên trái:");
+      for (let i = 1; i <= height; i++) {
+          console.log('*'.repeat(i));
+
+      }
+
+      console.log("\nTam giác vuông với góc vuông ở dưới bên phải:");
+      for (let i = 1; i <= height; i++) {
+          console.log(' '.repeat(height - i) + '*'.repeat(i));
+      }
+
+      console.log("\nTam giác vuông với góc vuông ở trên bên trái:");
+      for (let i = height; i >= 1; i --) {
+          console.log('*'.repeat(i));
+      }
+
+      console.log("\nTam giác vuông với góc vuông ở trên bên phải:");
+      for (let i = height; i >= 1; i--) {
+          console.log(' '.repeat(height - i) + '*'.repeat(i));
+      }
+    </script>
+</body>
+</html>

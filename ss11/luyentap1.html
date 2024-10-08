@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            // Bài 1: Sử dụng vòng lặp để đếm từ 1 đến 100. Khi số là 99, hiển thị hộp thoại thông báo là đã hoàn thành.
+            for (let i = 1; i <= 100; i++) {
+                if (i === 99) {
+                    alert("Đã hoàn thành");
+                }
+            }
+            // Bài 2: Sử dụng hàm prompt() để lấy thông tin nhiệt độ hiện tại được nhập bởi người truy cập. Nếu nhiệt độ nhập vào trên 100, yêu cầu người dùng giảm nhiệt độ. Nếu nhiệt độ dưới 20, yêu cầu người dùng tăng nhiệt độ.
+            let temperature;
+            do {
+                temperature = parseFloat(prompt("Nhập nhiệt độ hiện tại: "));
+                if (temperature > 100) {
+                    alert("Hãy giảm nhiệt độ. ");
+                } else if ( temperature < 20) {
+                    alert("Hãy tăng nhiệt độ.");
+                }
+            } while (temperature > 100 || temperature < 20);
+            // Bài 3: Hiển thị ra 20 số trong dãy fibonacci đầu tiên.
+            let fib = [0,1];
+            for (let i = 2; i < 20; i++) {
+                fib[i] = fib[i -1] + fib[i - 2];
+            }
+            alert(`20 số đầu tiên trong dãy Fibonacci: ${fib.join(", ")}`);
+            // Bài 4: Tìm số đầu tiên trong dãy fibonacci chia hết cho 5.
+            let fib = [0, 1];
+            let firstDivisibleBy5;
+
+            while (firstDivisibleBy5 === undefined) {
+                let nextFib = fib[fib.length - 1] + fib[fib.length - 2];
+                fib.push(nextFib);
+                if (nextFib % 5 === 0) {
+                    firstDivisibleBy5 = nextFib;
+                }
+            }
+            alert(`Số đầu tiên trong dãy Fibonacci chia hết cho 5 là: ${firstDivisibleBy5}`);
+
+            // Bài 5: Tính tổng của 20 số đầu tiên trong dãy fibonacci.
+            let fib = [0, 1];
+            let sum = fib[0] + fib[1];
+
+            for (let i = 2; i < 20; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+                sum += fib[i];
+            }
+            alert(`Tổng của 20 số đầu tiên trong dãy Fibonacci là: ${sum}`);
+
+            // Bài 6: Tính tổng của 30 số chia hết cho 7 đầu tiên trong các số tự nhiên.
+            let count = 0;
+            let sum = 0;
+            let num = 1;
+
+            whhlie (count < 30) {
+                if (num % 7 === 0) {
+                    sum += num;
+                    count++;
+                }
+                num++;
+            }
+            alert(`Tổng của 30 số chia hết cho 7 đầu tiên là: ${sum}`);
+
+            // Bài 7: Hãy viết một chương trình in ra các số từ 1 đến 100. Nhưng nếu số chia hết cho 3 thì in ra "Fizz", 5 thì in ra "Buzz" thay vì in ra số đó. Và nếu số đó chia hết cho cả 3 và 5 thì in ra chữ "FizzBuzz".
+            for (let i = 1; i <= 100; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    alert("FizzBuzz");
+                } else if (i % 3 === 0) {
+                    alert("Fizz");
+                } else if (i % 5 === 0) {
+                    alert("Buzz");
+                } else {
+                    alert(i);
+                }
+            }
+            // Bài 8: Game đoán số
+
+            // Nâng cấp game "Hãy thử đoán xem!"
+
+            // 1. Thiết kế giao diện: Giao diện chỉ gồm 1 Button "Chơi": cho phép người dùng bắt đầu  chơi hoặc chơi lại
+
+            // 2. Mô tả ứng dụng: Khi người dùng nhấn vào button “Chơi”:
+            /* Ứng dụng hiển thị cửa sổ prompt cho phép người dùng nhập vào muốn đoán trong khoảng nào
+             Ứng dụng chọn ra số ngẫu nhiên trong khoảng mà ngườI dùng chọn
+             Ứng dụng hiển thị cửa số prompt cho người dùng nhập giá trị mà người dùng đoán
+             Ứng dụng lấy kết quả và so sánh với giá trị ngẫu nhiên.
+               - Nếu bằng thì hiển thị thông báo chúc mừng và kết thúc lượt chơi
+               - Nếu lớn hơn hoặc bé thua thì hiển thị thông báo lớn hơn hay bé thua và cho phép người dùng lựa chọn lại. */
+
+            // let guess ở đây là so sánh
+
+            document.querySelector("button").addEventListener("click". playGame);
+
+            function playGame() {
+                let min = prompt("Nhập vào số nhỏ nhất bạn muốn đoán: ");
+                let max = prompt("Nhập vào số lớn nhất bạn muốn đoán: ");
+                min = Number(min);
+                max = Number(max);
+
+                let randomNumber = Math.float(Math.random() * (max - min + 1)) + min;
+                let guess;
+
+                while (true) {
+                    guess = prompt("Hãy đoán số (từ " + min + " đến " + max + "):");
+                    guess = Number(guess);
+
+                    if (guess === randomNunber) {
+                        alert("Chức mừng! bạn đã đoán đúng số.");
+                        break;
+                    } else if (guess < randomNuber) {
+                        alert("Số bạn đoán nhỏ hơn. hãy thử lại!");
+                    } else {
+                        alert("Số bạn đoán lớn hơn. Hãy thử lại!");
+                    }
+                }
+
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            let heart = "";
+            let size = 6;
+
+            for (let i = size / 2; i <= size; i += 0.5) {
+                for (let j = 1; j<= size; j++) {
+                    let condition1 = (i - size / 2) ** 2 + (j - size / 2) ** 2 <= (size / 2) ** 2;
+                    let condition2 = (i - size / 2) ** 2 + (j - (size / 2 + 1)) ** 2 <= (size / 2) ** 2;
+                    if (condition1 || condition2) {
+                        heart += '*';
+                    } else {
+                        heart += '';
+                    }
+                }
+                heart += '\n';
+            }
+            console.log(heart);
+        </script>
+</body>
+</html>
