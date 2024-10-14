@@ -2,14 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiển Thị Số Nguyên Tố Đầu Tiên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        input {
+            padding: 8px;
+            margin: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <script>
-      let num;
-      do {
-        num = +prompt("Nhập số")
-      }
-    </script>
+
+<input type="number" id="number-input" placeholder="Nhập số lượng số nguyên tố cần hiển thị">
+<button onclick="displayPrimes()">Hiển Thị Số Nguyên Tố</button>
+<div class="result" id="result"></div>
+
+<script>
+    // Hàm kiểm tra số nguyên tố
+    function isPrime(num) {
+        if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    }
+
+    // Hàm hiển thị số nguyên tố
+    function displayPrimes() {
+        const numbers = parseInt(document.getElementById('number-input').value);
+        if (isNaN(numbers) || numbers <= 0) {
+            alert('Vui lòng nhập một số nguyên dương!');
+            return;
+        }
+
+        let count = 0;  // Đếm số lượng số nguyên tố đã tìm được
+        let N = 2;      // Bắt đầu kiểm tra từ số 2
+        const primes = []; // Mảng chứa các số nguyên tố
+
+        while (count < numbers) {
+            if (isPrime(N)) {
+                primes.push(N); // Lưu số nguyên tố vào mảng
+                count++;
+            }
+            N++;
+        }
+
+        // Hiển thị kết quả ra giao diện
+        document.getElementById('result').innerText = `Các số nguyên tố đầu tiên: ${primes.join(', ')}`;
+    }
+</script>
+
 </body>
 </html>
