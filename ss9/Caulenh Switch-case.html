@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  function calculateDays() {
+    // Lấy giá trị tháng từ form
+    const month = parseInt(document.getElementById("month").value);
+    let days;
+
+    // Sử dụng switch-case để xác định số ngày
+    switch (month) {
+      case 1: // Tháng 1
+      case 3: // Tháng 3
+      case 5: // Tháng 5
+      case 7: // Tháng 7
+      case 8: // Tháng 8
+      case 10: // Tháng 10
+      case 12: // Tháng 12
+        days = 31;
+        break;
+      case 4: // Tháng 4
+      case 6: // Tháng 6
+      case 9: // Tháng 9
+      case 11: // Tháng 11
+        days = 30;
+        break;
+      case 2: // Tháng 2
+        days = 28; // Không tính năm nhuận ở đây
+        break;
+      default:
+        days = "Số tháng không hợp lệ!"; // Nếu không phải từ 1 đến 12
+    }
+
+    // Hiển thị kết quả
+    document.getElementById("result").innerText = `Số ngày trong tháng ${month} là: ${days}`;
+  }
+
+</script>
+</body>
+</html>

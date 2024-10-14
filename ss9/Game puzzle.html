@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Puzzle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #puzzle-container {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 5px;
+      margin: auto;
+    }
+    .puzzle-piece {
+      width: 100px;
+      height: 100px;
+      background-size: 300px 300px; /* Kích thước bức tranh gốc */
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .puzzle-piece:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+<h1>Game Puzzle</h1>
+<div id="puzzle-container"></div>
+<div id="message" style="margin-top: 20px;"></div>
+
+<script>
+  const images = [
+    'image1.jpg', // Thay thế bằng đường dẫn hình ảnh thực tế
+    'image2.jpg',
+    'image3.jpg',
+    'image4.jpg',
+    'image5.jpg',
+    'image6.jpg',
+    'image7.jpg',
+    'image8.jpg',
+    'image9.jpg'
+  ];
+
+  let currentImageIndex = 0; // Chỉ số hình ảnh hiện tại
+  const puzzleContainer = document.getElementById('puzzle-container');
+
+  // Tạo các ô ảnh
+  images.forEach((image, index) => {
+    const piece = document.createElement('div');
+    piece.className = 'puzzle-piece';
+    piece.style.backgroundImage = `url(${image})`;
+    piece.dataset.index = index;
+    piece.addEventListener('click', () => changeImage(piece));
+    puzzleContainer.appendChild(piece);
+  });
+
+  // Thay đổi hình ảnh khi nhấp vào
+  function changeImage(piece) {
+    currentImageIndex = (parseInt(piece.dataset.index) + 1) % images.length;
+    piece.style.backgroundImage = `url(${images[currentImageIndex]})`;
+    checkCompletion();
+  }
+
+  // Kiểm tra xem tất cả các ô đã hoàn thành chưa
+  function checkCompletion() {
+    const pieces = document.querySelectorAll('.puzzle-piece');
+    let completed = true;
+
+    pieces.forEach((piece, index) => {
+      if (piece.style.backgroundImage !== `url(${images[index]})`) {
+        completed = false;
+      }
+    });
+
+    if (completed) {
+      displayMessage('Chúc mừng! Bạn đã hoàn thành bức tranh!');
+    }
+  }
+
+  // Hiển thị thông báo
+  function displayMessage(msg) {
+    const messageDiv = document.getElementById('message');
+    messageDiv.innerText = msg;
+  }
+</script>
+</body>
+</html>
+

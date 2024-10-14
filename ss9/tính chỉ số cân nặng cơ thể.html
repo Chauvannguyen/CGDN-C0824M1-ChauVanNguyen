@@ -4,32 +4,55 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    input {
+        margin: 5px;
+    }
+</style>
+</head>
 <body>
-        <script>
-            // function calculateBMI(weight, height) {
-            //     if (height <= 0) {
-            //         return "Chiều cao phải lớn hơn 0.";
-            //     }
-            //     const bmi = weight / (height * height);
-            //     return bmi.toFixed(2); // làm tròn đến 2 chữ số thập phân
-            // }
-            // function classifyBMI(bmi) {
-            //     if (bmi < 18)
-            //         document.write("Underweight");
-            //     else if (bmi < 25.0)
-            //         document.write("Normal");
-            //     else if (bmi < 30.0)
-            //         document.write("overwetght");
-            //     else
-            //         document.write("Obese");
-            //
-            // }
-            function calculateBMI(weight, height) {
-                const a = parseFloat(prompt("nhập chiều cao:"));
-                const b = parseFloat(prompt("nhập căn năng:"));
-                const bmi =
-            }
+<h1>Tính Chỉ Số Khối Cơ Thể (BMI)</h1>
+<form id="bmi-form">
+    <label for="weight">Cân nặng (kg):</label>
+    <input type="number" id="weight" required>
 
-        </script>
+    <label for="height">Chiều cao (m):</label>
+    <input type="number" id="height" step="0.01" required>
+
+    <button type="button" onclick="calculateBMI()">Tính BMI</button>
+</form>
+
+<h2>Kết quả:</h2>
+<div id="result"></div>
+
+<script src="script.js">
+    function calculateBMI() {
+        // Lấy giá trị từ form
+        const weight = parseFloat(document.getElementById("weight").value);
+        const height = parseFloat(document.getElementById("height").value);
+
+        // Tính chỉ số BMI
+        const bmi = weight / (height ** 2);
+        let classification = "";
+
+        // Phân loại BMI
+        if (bmi < 18) {
+            classification = "Underweight";
+        } else if (bmi < 25.0) {
+            classification = "Normal";
+        } else if (bmi < 30.0) {
+            classification = "Overweight";
+        } else {
+            classification = "Obese";
+        }
+
+        // Hiển thị kết quả
+        document.getElementById("result").innerText = `BMI: ${bmi.toFixed(2)}, Phân loại: ${classification}`;
+    }
+</script>
 </body>
 </html>
