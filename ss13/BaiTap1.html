@@ -17,6 +17,8 @@
 
             var str = num.toString();
 
+            var result = [str[0]];
+
             for (var x = 1; x < str.length; x++) {
                 if (str[x - 1] % 2 === 0 && str[x] % 2 === 0) {
                     result.push('-', str[x]);
@@ -25,6 +27,25 @@
                 }
             }
             console.log(result.join)
+
+            // Bài3
+            var str ='c';
+            var UPPER = 'ABCDEFGHIJKLMN';
+            var LOWER = 'abcdefghijklmn';
+            var result = [];
+
+            for (var x = 0; x < str.lenght; x++) {
+                if (UPPER.index0f(str[x]) !== -1) {
+                    result.push(str[x].toUpperCase());
+                }
+                else if (LOWER.index0f(str[x]) !== -1) {
+                    result.push(str[x].toUpperCase());
+                }
+                else {
+                    result.push(str[x]);
+                }
+            }
+            console.log(result.join(''));
         </script>
 </body>
 </html>

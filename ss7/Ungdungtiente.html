@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Ứng Dụng Chuyển Đổi Tiền Tệ</h1>
+<form id="currency-form">
+  <label for="from-currency">Chọn đồng tiền gốc:</label>
+  <select id="from-currency">
+    <option value="VND">Việt Nam Đồng (VND)</option>
+    <option value="USD">Đô-la Mỹ (USD)</option>
+    <option value="EUR">Euro (EUR)</option>
+  </select>
+
+  <label for="to-currency">Chọn đồng tiền muốn chuyển đổi:</label>
+  <select id="to-currency">
+    <option value="USD">Đô-la Mỹ (USD)</option>
+    <option value="VND">Việt Nam Đồng (VND)</option>
+    <option value="EUR">Euro (EUR)</option>
+  </select>
+
+  <label for="amount">Nhập giá trị muốn chuyển đổi:</label>
+  <input type="number" id="amount" required />
+
+  <button type="button" id="convert-button">Chuyển đổi</button>
+</form>
+
+<h2>Kết quả:</h2>
+<div id="result"></div>
+
+<script src="script.js">
+  // Tỉ giá giữa các đồng tiền (có thể thay đổi theo thực tế)
+  const exchangeRates = {
+    VND: { USD: 0.000042, EUR: 0.000038 },
+    USD: { VND: 23500, EUR: 0.85 },
+    EUR: { VND: 26000, USD: 1.18 }
+  };
+
+  // Hàm chuyển đổi tiền
+  function convertCurrency() {
+    const fromCurrency = document.getElementById("from-currency").value;
+    const toCurrency = document.getElementById("to-currency").value;
+    const amount = parseFloat(document.getElementById("amount").value);
+
+    if (!amount || amount <= 0) {
+      alert("Vui lòng nhập một giá trị hợp lệ.");
+      return;
+    }
+
+    const rate = exchangeRates[fromCurrency][toCurrency];
+    const convertedAmount = (amount * rate).toFixed(2);
+
+    document.getElementById("result").innerText = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+  }
+
+  // Gọi hàm khi nhấn nút Convert
+  document.getElementById("convert-button").addEventListener("click", convertCurrency);
+
+</script>
+</body>
+</html>

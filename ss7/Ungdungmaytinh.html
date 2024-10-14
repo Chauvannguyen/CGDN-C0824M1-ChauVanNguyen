@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Máy Tính Đơn Giản</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  input {
+    margin: 5px;
+  }
+</style>
+</head>
+<body>
+<h1>Ứng Dụng Máy Tính Đơn Giản</h1>
+<form id="calculator-form">
+  <input type="number" id="number1" placeholder="Số 1" required>
+  <input type="number" id="number2" placeholder="Số 2" required>
+
+  <div>
+    <button type="button" onclick="add()">Cộng (+)</button>
+    <button type="button" onclick="subtract()">Trừ (-)</button>
+    <button type="button" onclick="multiply()">Nhân (×)</button>
+    <button type="button" onclick="divide()">Chia (÷)</button>
+  </div>
+</form>
+
+<h2>Kết quả:</h2>
+<div id="result"></div>
+
+<script src="script.js">
+  // Hàm lấy giá trị từ form
+  function getValues() {
+    const number1 = parseFloat(document.getElementById("number1").value);
+    const number2 = parseFloat(document.getElementById("number2").value);
+    return { number1, number2 };
+  }
+
+  // Hàm cộng
+  function add() {
+    const { number1, number2 } = getValues();
+    const result = number1 + number2;
+    displayResult(result);
+  }
+
+  // Hàm trừ
+  function subtract() {
+    const { number1, number2 } = getValues();
+    const result = number1 - number2;
+    displayResult(result);
+  }
+
+  // Hàm nhân
+  function multiply() {
+    const { number1, number2 } = getValues();
+    const result = number1 * number2;
+    displayResult(result);
+  }
+
+  // Hàm chia
+  function divide() {
+    const { number1, number2 } = getValues();
+    if (number2 === 0) {
+      displayResult("Không thể chia cho 0!");
+    } else {
+      const result = number1 / number2;
+      displayResult(result);
+    }
+  }
+
+  // Hàm hiển thị kết quả
+  function displayResult(result) {
+    document.getElementById("result").innerText = `Kết quả: ${result}`;
+  }
+
+</script>
+
+</body>
+</html>

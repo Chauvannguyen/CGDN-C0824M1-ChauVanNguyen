@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+    // Bài 1: Viết chương trình nhập điểm của một sinh viên cho các môn: Vật lý, Hóa học, và Sinh học. Sau đó hiển thị điểm trung bình và tổng của những điểm này.
+
+    let diemVatLy = parseFloat(prompt("Nhập điểm Vật Lý: "));
+    let diemHoaHoc = parseFloat(prompt("Nhập điểm Hóa học: "));
+    let diemSinhHoc = parseFloat(prompt("Nhập điểm Sinh học: "));
+
+    // Tính tổng và điểm trung bình
+    let tongDiem = diemVatLy + diemHoaHoc + diemSinhHoc;
+    let diemTrungBinh = tongDiem / 3;
+
+    // Hiển thị kết quả
+    alert(`Tổng điểm: ${tongDiem}`);
+    alert(`Điểm trung bình: ${diemTrungBinh}`);
+
+    // Bài 2:  Viết chương trình nhập một giá trị là độ 0C (Celsius) và chuyển nó sang độ 0F (Fahrenheit). [Hướng dẫn: C/5 = (F-32)/9]
+
+    let doCelsius = parseFloat(prompt("Nhập độ C (Celsius): "));
+
+    // Chuyển đổi sang độ Fahrenheit
+    let doFahrenheit = (doCelsius * 9/5) + 32;
+
+    // Hiển thị kết quả
+    alert(`${doCelsius} độ C tương đương ${doFahrenheit} độ F`);
+
+    // Bài 3: Viết chương trình tính diện tích hình tròn
+
+    // Nhập bán kính
+    let banKinh = parseFloat(prompt("Nhập bán kính hình tròn: "));
+
+    // Tính diện tích
+    let dienTich = Math.PI * Math.pow(banKinh, 2);
+
+    // Hiển thị kết quả
+    alert(`Diện tích hình tròn có bán kính ${banKinh} là: ${dienTich}`);
+
+    // Bài 4: Viết chương trình chu vi hình tròn
+
+    // Nhập bán kính
+    let banKinh = parseFloat(prompt("Nhập bán kính hình tròn: "));
+
+    // Tính chu vi
+    let chuVi = 2 * Math.PI * banKinh;
+
+    // Hiển thị kết quả
+    alert(`Chu vi hình tròn có bán kính ${banKinh} là: ${chuVi}`);
+
+  </script>
+</body>
+</html>

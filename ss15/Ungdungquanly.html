@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div style="width: 400px; height: 50px; background-color: #f4f4f4;">
+    <div style="padding-top: 10px; padding-left: 40px">
+
+        <input type="text" id="name" style="width: 200px; height: 30px" placeholder="Tên">
+        <button id="add">add</button>
+    </div>
+</div>
+
+<div id="result"></div>
+        <script>
+            class Product {
+                id;
+                name;
+
+                constructor(id, name) {
+                    this.id = id;
+                    this.name = name;
+
+                }
+            }
+
+            function display(products) {
+                let result = "<table>"
+                for (let i = 0; i < products.length; i++) {
+                    result += "<tr>"
+                    result += `<td>${products[i].id}</td>`
+                    result += `<td>${products[i].name}</td>`
+                    result += `<td><button>Edit</button></td>`
+                    result += `<td><button onclick="deleteProduct(${i})">Delete</button></td>`
+                    result += "</tr>"
+                }
+                result += "</table>"
+                document.getElementById("result").innerHTML = result;
+            }
+            function deleteProduct(i) {
+                let isDelete = confirm(`Bạn có chắc chắn xoá sản phẩm ${products[i].name}?`)
+                if(isDelete) {
+                    products.splice(i, 1)
+                    display(products)
+                    alert("xoá thành công")
+                }
+            }
+            document.getElementById("add").addEventListener("click", function (){
+                const name = document.getElementById("name").value;
+
+                if (name.length > 5 && name.length < 50){
+                    const newId = products.length ? products[products.length - 1].id + 1 : 1;
+                    products.push(new Product(newId, name));
+                    display(products);
+                    document.getElementById("name").value ="";
+                    alert("thêm sản phẩm thành công");
+                } else {
+                    alert("Vui lòng nhập lại tên sản phẩm từ 5 đến 50 ký tự");
+                }
+            })
+
+            let products = [];
+            products.push(new Product(1, "SS24 ultra", 30000000,"SamSung", "Hơi đắt"))
+            products.push(new Product(2, "Iphone 16", 35000000,"Apple", "Hơi đắt"))
+            display(products);
+
+
+        </script>
+</body>
+</html>
