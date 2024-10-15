@@ -2,9 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe - Caro</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            cursor: pointer;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
+    <h1>Game Caro - Tic Tac Toe</h1>
+    <div class="board" id="board"></div>
+    <button onclick="resetGame()">Chơi Lại</button>
+    <p id="status"></p>
+</div>
+
+<script>
+    // Khởi tạo biến
+    let board = [
+        ['.', '.', '.'],
+        ['.', '.', '.'],
+        ['.', '.', '.']
+    ];
+    let currentPlayer = 'X'; // Người chơi hiện tại (X hoặc O)
+    let gameActive = true; // Trạng thái game
+
+    // Hàm tạo bàn cờ HTML từ mảng board
+    function renderBoard() {
+        const boardDiv = document.getElementById('board');
+        boardDiv.innerHTML = ''; // Xóa nội dung cũ
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.textContent = board[i][j] === '.' ? '' : board[i][j];
+                cell.addEventListener('click', () => handleCellClick(i, j));
+                boardDiv.appendChild(cell);
+            }
+        }
+    }
+
+    // Xử lý sự kiện khi ô được nhấp
+    function handleCellClick(i, j) {
+        if (board[i][j] !== '.' || !gameActive) return; // Ô đã được điền hoặc game kết thúc
+
+        board[i][j] = currentPlayer; // Điền giá trị của người chơi vào ô
+        if (checkWinner()) {
+            document.getElementById('status').textContent = `Người chơi ${currentPlayer} thắng! 🎉`;
+            gameActive = false; // Kết thúc game
+        } else if (isBoardFull()) {
+            document.getElementById('status').textContent = 'Hòa! 🤝';
+            gameActive = false; // Kết thúc game
+        } else {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Chuyển lượt
+        }
+
+        renderBoard(); // Cập nhật lại giao diện bàn cờ
+    }
+
+    // Kiểm tra xem có người chơi thắng không
+    function checkWinner() {
+        // Kiểm tra hàng và cột
+        for (let i = 0; i < 3; i++) {
+            if (
+                board[i][0] === currentPlayer &&
+                board[i][1] === currentPlayer &&
+                board[i][2] === currentPlayer
+            ) return true;
+
+            if (
+                board[0][i] === currentPlayer &&
+                board[1][i] === currentPlayer &&
+                board[2][i] === currentPlayer
+            ) return true;
+        }
+
+        // Kiểm tra đường chéo
+        if (
+            board[0][0] === currentPlayer &&
+            board[1][1] === currentPlayer &&
+            board[2][2] === currentPlayer
+        ) return true;
+
+        if (
+            board[0][2] === currentPlayer &&
+            board[1][1] === currentPlayer &&
+            board[2][0] === currentPlayer
+        ) return true;
+
+        return false;
+    }
+
+    // Kiểm tra xem bàn cờ đã đầy chưa
+    function isBoardFull() {
+        return board.every(row => row.every(cell => cell !== '.'));
+    }
+
+    // Hàm khởi động lại game
+    function resetGame() {
+        board = [
+            ['.', '.', '.'],
+            ['.', '.', '.'],
+            ['.', '.', '.']
+        ];
+        currentPlayer = 'X';
+        gameActive = true;
+        document.getElementById('status').textContent = '';
+        renderBoard();
+    }
+
+    // Khởi tạo game
+    renderBoard();
+</script>
 
 </body>
 </html>

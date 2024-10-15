@@ -2,9 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faking Textarea on Typing</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 400px;
+            height: 100px;
+            font-size: 18px;
+            padding: 10px;
+            resize: none;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
+
+<h1>Ứng Dụng Faking Textarea</h1>
+<textarea id="fakeTextarea" placeholder="Gõ bất kỳ..."></textarea>
+<p>Dòng chữ cố định: "Hello! Welcome to the fun world of coding!"</p>
+
+<script>
+    const fixedText = "Hello! Welcome to the fun world of coding!";
+    let index = 0;
+
+    // Lấy textarea từ HTML
+    const textarea = document.getElementById('fakeTextarea');
+
+    // Lắng nghe sự kiện người dùng gõ phím
+    textarea.addEventListener('input', (event) => {
+        // Ngăn chặn ký tự do người dùng nhập vào
+        event.preventDefault();
+
+        // Cập nhật ký tự tiếp theo từ chuỗi cố định
+        if (index < fixedText.length) {
+            textarea.value += fixedText[index];
+            index++;
+        } else {
+            // Khi hoàn thành chuỗi, khóa textarea
+            textarea.value = fixedText;
+            textarea.disabled = true;
+        }
+    });
+</script>
 
 </body>
 </html>

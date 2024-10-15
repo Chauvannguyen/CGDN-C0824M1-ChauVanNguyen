@@ -5,6 +5,68 @@
     <title>Title</title>
 </head>
 <body>
+        <script>
+            // BT1
+            let a = [
+                [1, 2, 1, 24],
+                [8, 11, 9, 4],
+                [7, 0, 7, 27],
+                [7, 4, 28, 14],
+                [3, 10, 26, 7]
+            ];
 
+            for (let i = 0; i < a.length; i++) {
+                console.log(`row ${i}`);
+                for (let j = 0; j < a[i].length; j++) {
+                    console.log(` ${a[i][j]}`);
+                }
+            }
+
+            // BT2
+            let chars = ['c', 's', 'c', '2', '6', '1'];
+            let reversedStr = chars.reverse().join('');
+
+            console.log(reversedStr);  // Kết quả: "162csc"
+
+            // BT3
+            let arr = ['a', '1', 'b', '5', 'c', '2', 'd', '9'];
+            let count = 0;
+
+            arr.forEach(char => {
+                if (!isNaN(char)) count++;  // Kiểm tra nếu là ký tự số
+            });
+
+            console.log(`Số ký tự số trong mảng: ${count}`);
+
+            // BT4
+            let str = "Học lập trình tại CodeGym rất thú vị";
+            let wordCount = str.split(' ').length;
+
+            console.log(`Số từ trong chuỗi: ${wordCount}`);
+
+
+            // BT5
+            let str1 = prompt("Nhập chuỗi thứ nhất:");
+            let str2 = prompt("Nhập chuỗi thứ hai:");
+
+            if (str1 === str2) {
+                console.log("Hai chuỗi giống nhau.");
+            } else {
+                console.log("Hai chuỗi không giống nhau.");
+            }
+
+            // BT6
+            let arr = ['a', '-', 'b', '-', 'c', 'd', '-', 'e'];
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === '-') {
+                    arr[i] = '_';
+                }
+            }
+
+            console.log('Mảng sau khi thay thế:', arr);
+
+
+        </script>
 </body>
 </html>

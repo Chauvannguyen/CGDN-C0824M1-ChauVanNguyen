@@ -6,7 +6,93 @@
 </head>
 <body>
         <script>
-            const number1 =
+            // Bài 1- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử. Chương trình thực hiện tính và hiển thị xem có bao nhiêu số nguyên lớn hơn hoặc bằng 10.
+            const arr1 = [5, 10, 15, 7, 3, 12, 20, 8, 11, 9];
+            let count = 0;
+
+            arr1.forEach(num => {
+                if (num >= 10) count++;
+            });
+
+            console.log(`Số phần tử lớn hơn hoặc bằng 10 là: ${count}`);
+
+            // Bài 2- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử khác nhau. Chương trình hiển thị ra được phần tử có giá trị lớn nhất trong mảng và vị trí của phần tử đó.
+            const arr2 = [3, 7, 1, 22, 5, 9, 14, 18, 2, 11];
+            let max = arr2[0];
+            let index = 0;
+
+            arr2.forEach((num, i) => {
+                if (num > max) {
+                    max = num;
+                    index = i;
+                }
+            });
+
+            console.log(`Giá trị lớn nhất là: ${max}, tại vị trí: ${index}`);
+
+
+            // Bài 3- Viết chương trình khởi tạo mảng số nguyên. Hiển hiện giá trị lớn nhất trong mảng đó. In ra giá trị trung bình của các phần tử trong mảng.
+            const arr3 = [3, 5, 7, 9, 11, 13, 15, 17, 19, 21];
+            let max = Math.max(...arr3);
+            let average = arr3.reduce((sum, num) => sum + num, 0) / arr3.length;
+
+            console.log(`Giá trị lớn nhất là: ${max}`);
+            console.log(`Giá trị trung bình là: ${average}`);
+
+
+            // Bài 4- Viết chương trình khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.
+            const arr4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const reversedArr = arr4.reverse();
+
+            console.log('Mảng sau khi đảo ngược:', reversedArr);
+
+
+            // Bài 5- Viết chương trình đếm số nguyên âm trong một chuỗi
+            const arr5 = [-3, 4, -1, 0, -7, 8, 10, -9, 2, -5];
+            const negativeCount = arr5.filter(num => num < 0).length;
+
+            console.log(`Số lượng số nguyên âm là: ${negativeCount}`);
+
+
+            // Bài 6- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. Chương trình tìm xem V có nằm trong mảng số nguyên không? Nếu V thuộc mảng số nguyên thì in ra "V is in the array" còn lại in ra "V is not in the array".
+            const arr6 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const V = 5;
+
+            if (arr6.includes(V)) {
+                console.log(`${V} is in the array`);
+            } else {
+                console.log(`${V} is not in the array`);
+            }
+
+
+            // Bài 7- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. Chương trình kiểm tra xem V có thuộc mảng đã cho không, nếu V thuộc mảng đã cho xoá V khỏi mảng (Bản chất việc xoá ở đây tức là dịch phần tử ở bên phải V sang vị trí của V, và gán 0 cho phần tử cuối cùng của mảng)
+            const arr7 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const V = 5;
+
+            const index = arr7.indexOf(V);
+            if (index !== -1) {
+                arr7.splice(index, 1);
+                arr7.push(0);  // Gán 0 cho phần tử cuối
+            }
+
+            console.log('Mảng sau khi xóa phần tử:', arr7);
+
+
+            // Bài 8- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử. Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.
+            const arr8 = [5, 3, 8, 1, 9, 6, 2, 4, 7, 10];
+            const sortedArr = arr8.sort((a, b) => b - a);
+
+            console.log('Mảng sau khi sắp xếp giảm dần:', sortedArr);
+
+
+            // Bài 9- Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b. Mảng c là một mảng được khai báo gồm 20 phần tử số nguyên. Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c. Hiển thị mảng c.
+            const a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const b = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+            const c = [...a, ...b];
+
+            console.log('Mảng sau khi nối:', c);
+
+
         </script>
 </body>
 </html>
