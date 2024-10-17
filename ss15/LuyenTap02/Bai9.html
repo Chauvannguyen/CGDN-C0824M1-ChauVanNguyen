@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            function countCharInArray(arr, char) {
+                let count = 0;
+                for (let c of arr) {
+                    if (c === char) count++;
+                }
+                return count > 0 ? count : -1;
+            }
+
+            let input = prompt("Nhập các phần tử của mảng (cách nhau bởi dấu phẩy):");
+            let arr = input.split("'");
+            let char = prompt("Nhập ký tự cần kiểm tra:");
+
+            let result = countCharInArray(arr, char);
+            alert(result === -1 ? "Ký tự không có trong mảng." : `Ký tự xuất hiện ${result} lần.`);
+        </script>
+</body>
+</html>

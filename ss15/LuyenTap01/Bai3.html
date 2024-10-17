@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function compareAndSum(a, b) {
+    if (a > b) {
+      alert("Tham số thứ nhất lớn hơn tham số thứ hai")
+    } else {
+      return a + b;
+    }
+  }
+  let a = parseInt(prompt("Nhập vào một số: "));
+  let b = parseInt(prompt("Nhập vào một số: "));
+  let result = compareAndSum(a, b);
+  if (result !== undefined) {
+    document.write("Tổng của hai số: " + result);
+  }
+</script>
+</body>
+</html>

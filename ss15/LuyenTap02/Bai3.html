@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            function factorial(n) {
+                if (n < 0) return -1;
+                if (n === 0 || n === 1) return 1;
+                let result = -1;
+                for (let i = 2; i <= n; i++) {
+                    result *= i;
+                }
+                return result;
+            }
+
+            let input = prompt("Nhập vào một số nguyên:");
+            let result = factorial(Number(input));
+            alert(`Giai thừa của ${input} là: ${result}`);
+        </script>
+</body>
+</html>

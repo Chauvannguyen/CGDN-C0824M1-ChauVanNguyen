@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function isDigit(char) {
+        return !isNaN(char) && char.trim() !== '';
+    }
+
+    let input = prompt("Nhập vào một ký tự:")
+    alert(isDigit(input)? "Đây là ký tự số." : "Đây không phải là ký tự số. ");
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            function swap(a,b) {
+                let temp = a;
+                a = b;
+                b = temp;
+                alert(`Sau khi đổi: a = ${a}, b =${b}`);
+            }
+
+            let a = Number(prompt("Nhập váo số a: "));
+            let b = Number(prompt("Nhập váo số b: "));
+
+            alert(`Trước khi đổi: a = ${a}, b = ${b}`);
+            swap(a,b);
+        </script>
+</body>
+</html>

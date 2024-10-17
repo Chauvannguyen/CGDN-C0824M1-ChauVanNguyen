@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <script>
+
+        function isPrime(number) {
+          if (number < 2) return false;
+          for (let i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i === 0) {
+              return false;
+            }
+          }
+          return true; // Là số nguyên tố
+        }
+
+        // Tìm và in ra tất cả các số nguyên tố nhỏ hơn 10.000
+        function printPrimesBelow(limit) {
+          let primes = [];
+
+          for (let i = 2; i < limit; i++) {
+            if (isPrime(i)) {
+              primes.push(i);
+            }
+          }
+
+          console.log(`Các số nguyên tố nhỏ hơn ${limit}:`, primes);
+        }
+
+        // Gọi hàm để tìm và in các số nguyên tố nhỏ hơn 10.000
+        printPrimesBelow(10000);
+
+      </script>
+</body>
+</html>

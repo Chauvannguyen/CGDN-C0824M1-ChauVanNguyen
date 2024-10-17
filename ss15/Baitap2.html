@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <script>
+        function footToMeter(foot) {
+          return 0.305 * foot;
+        }
+
+        function meterToFoot(meter) {
+          return 3.279 * meter;
+        }
+
+        // Nhập dữ liệu từ bàn phím và thực hiện chuyển đổi
+        function convert() {
+          let choice = prompt("Nhập lựa chọn: \n1. Feet sang Meter\n2. Meter sang Feet");
+
+          if (choice === '1') {
+            let feet = parseFloat(prompt("Nhập giá trị feet:"));
+            if (!isNaN(feet)) {
+              let meters = footToMeter(feet);
+              alert(`${feet} feet = ${meters.toFixed(3)} meters`);
+            } else {
+              alert("Vui lòng nhập một số hợp lệ!");
+            }
+          } else if (choice === '2') {
+            let meter = parseFloat(prompt("Nhập giá trị meter:"));
+            if (!isNaN(meter)) {
+              let feet = meterToFoot(meter);
+              alert(`${meter} meters = ${feet.toFixed(3)} feet`);
+            } else {
+              alert("Vui lòng nhập một số hợp lệ!");
+            }
+          } else {
+            alert("Lựa chọn không hợp lệ!");
+          }
+        }
+
+        // Gọi hàm để bắt đầu chương trình
+        convert();
+
+
+      </script>
+</body>
+</html>

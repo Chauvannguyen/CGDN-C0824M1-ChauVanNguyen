@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            const PI = Math.PI;
+
+            function circleArea(radius) {
+                return PI * radius * radius;
+            }
+
+            function circleCircumference(radius) {
+                return 2 * PI * radius;
+            }
+
+            let radius = prompt("Nhập bán kính hình tròn:");
+            radius = Number(radius);
+
+            alert(`Diện tích: ${circleArea(radius)}`);
+            alert(`Chi vi: ${circleCircumference(radius)}`);
+        </script>
+</body>
+</html>

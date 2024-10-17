@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            function isPalindrome(s) {
+                s = s.replace(/\s+/g, '').toLowerCase();
+                function checkPalindrome(start, end) {
+                    if (start >= end) return true;
+                    if (s[start] !== s[end]) return false;
+                    return checkPalindrome(start + 1, end - 1);
+                }
+
+                return checkPalindrome(0, s.length - 1);
+            }
+
+
+            let input = prompt("Nhập vào một từ hoặc chuỗi để kiểm tra:");
+            let result = isPalindrome(input);
+
+
+            if (result) {
+                alert(`"${input}" là từ đối xứng (palindrome).`);
+            } else {
+                alert(`"${input}" không phải là từ đối xứng (palindrome).`);
+            }
+
+        </script>
+</body>
+</html>
