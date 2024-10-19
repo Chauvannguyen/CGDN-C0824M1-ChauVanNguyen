@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhiệt độ - Temperature</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Chuyển Đổi Nhiệt Độ</h1>
+
+<label for="celsius">Nhập nhiệt độ (°C):</label>
+<input type="number" id="celsius" value="25" min="-273"><br>
+
+<button onclick="convertTemperature()">Chuyển Đổi</button>
+
+<p id="resultFahrenheit"></p>
+<p id="resultKelvin"></p>
+
+<script>
+    class Temperature {
+        constructor(celsius) {
+            if (celsius < -273) {
+                throw new Error("Nhiệt độ không thể nhỏ hơn -273°C");
+            }
+            this.celsius = celsius;
+        }
+        toFahrenheit() {
+            return (this.celsius * 9/5) + 32;
+        }
+        toKelvin() {
+            return this.celsius + 273.15;
+        }
+    }
+    function convertTemperature() {
+        try {
+            const celsiusValue = parseFloat(document.getElementById("celsius").value);
+            const temperature = new Temperature(celsiusValue);
+            document.getElementById("resultFahrenheit").textContent =
+                `Nhiệt độ Fahrenheit: ${temperature.toFahrenheit()} °F`;
+            document.getElementById("resultKelvin").textContent =
+                `Nhiệt độ Kelvin: ${temperature.toKelvin()} K`;
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+</script>
+
+</body>
+</html>

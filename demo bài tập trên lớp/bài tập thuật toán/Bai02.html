@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Số ngày trong tháng</title>
+</head>
+<body>
+<h1>Số ngày trong tháng</h1>
+<label for="month">Nhập tháng (1-12): </label>
+<input type="number" id="month" min="1" max="12"><br><br>
+
+<label for="year">Nhập năm: </label>
+<input type="number" id="year" min="0"><br><br>
+
+<button onclick="displayDays()">Xem kết quả</button>
+
+<h2 id="result"></h2>
+
+<script>
+  function getDaysInMonth(month, year) {
+    switch (month) {
+      case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+        return 31;
+      case 4: case 6: case 9: case 11:
+        return 30;
+      case 2:
+        if (isLeapYear(year)) return 29;
+        else return 28;
+      default:
+        return -1;
+    }
+  }
+  function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+  }
+
+  function displayDays() {
+    const month = parseInt(document.getElementById('month').value);
+    const year = parseInt(document.getElementById('year').value);
+    const days = getDaysInMonth(month, year);
+
+    if (days === -1) {
+      document.getElementById('result').innerText = "Tháng không hợp lệ!";
+    } else {
+      document.getElementById('result').innerText =
+              `Tháng ${month} năm ${year} có ${days} ngày.`;
+    }
+  }
+</script>
+</body>
+</html>

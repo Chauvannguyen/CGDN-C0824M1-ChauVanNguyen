@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô phỏng Điện Thoại</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 300px;
+            height: 100px;
+            margin: 10px;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Mô phỏng Điện Thoại</h1>
+
+<p>Trạng thái Pin: <span id="battery">100</span></p>
+<p>Trạng thái Điện Thoại: <span id="status">Tắt</span></p>
+
+<textarea id="message" placeholder="Soạn tin nhắn..."></textarea><br>
+<button onclick="phone1.togglePower()">Bật/Tắt Điện Thoại</button>
+<button onclick="phone1.chargeBattery()">Sạc Pin</button><br>
+<button onclick="phone1.sendMessage(phone2)">Gửi Tin Nhắn</button>
+<button onclick="phone2.viewInbox()">Xem Hộp Thư Đến</button>
+<button onclick="phone1.viewSent()">Xem Tin Đã Gửi</button>
+
+<script>
+    class Mobile {
+        constructor() {
+            this.battery = 100; // Pin tối đa
+            this.isPoweredOn = false; // Trạng thái bật/tắt
+            this.draftMessage = ""; // Tin nhắn đang soạn thảo
+            this.inbox = []; // Hộp thư đến
+            this.sentMessages = []; // Tin nhắn đã gửi
+        }
+
+        checkPower() {
+            return this.isPoweredOn;
+        }
+        togglePower() {
+            this.isPoweredOn = !this.isPoweredOn;
+            document.getElementById("status").textContent = this.isPoweredOn ? "Bật" : "Tắt";
+            this.decreaseBattery();
+        }
+        decreaseBattery() {
+            if (this.battery > 0) {
+                this.battery--;
+                document.getElementById("battery").textContent = this.battery;
+            } else {
+                alert("Pin đã hết. Vui lòng sạc điện thoại.");
+                this.isPoweredOn = false;
+                document.getElementById("status").textContent = "Tắt";
+            }
+        }
+        chargeBattery() {
+            if (this.battery < 100) {
+                this.battery++;
+                document.getElementById("battery").textContent = this.battery;
+            } else {
+                alert("Pin đã đầy.");
+            }
+        }
+        composeMessage(message) {
+            if (this.isPoweredOn) {
+                this.draftMessage = message;
+                this.decreaseBattery();
+            } else {
+                alert("Điện thoại đang tắt. Hãy bật điện thoại trước.");
+            }
+        }
+
+        receiveMessage(message) {
+            this.inbox.push(message);
+            this.decreaseBattery();
+        }
+        sendMessage(receiverPhone) {
+            const message = document.getElementById("message").value;
+            if (this.isPoweredOn && message.trim() !== "") {
+                receiverPhone.receiveMessage(message);
+                this.sentMessages.push(message);
+                alert("Tin nhắn đã được gửi.");
+                this.decreaseBattery();
+            } else {
+                alert("Vui lòng bật điện thoại và nhập tin nhắn hợp lệ.");
+            }
+        }
+        viewInbox() {
+            if (this.isPoweredOn) {
+                alert("Hộp Thư Đến:\n" + (this.inbox.join("\n") || "Không có tin nhắn."));
+                this.decreaseBattery();
+            } else {
+                alert("Điện thoại đang tắt. Hãy bật điện thoại trước.");
+            }
+        }
+        viewSent() {
+            if (this.isPoweredOn) {
+                alert("Tin Nhắn Đã Gửi:\n" + (this.sentMessages.join("\n") || "Không có tin nhắn."));
+                this.decreaseBattery();
+            } else {
+                alert("Điện thoại đang tắt. Hãy bật điện thoại trước.");
+            }
+        }
+    }
+    const phone1 = new Mobile();
+    const phone2 = new Mobile();
+</script>
+
+</body>
+</html>

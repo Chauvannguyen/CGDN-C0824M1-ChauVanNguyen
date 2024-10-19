@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hình chữ nhật - Rectangle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Vẽ Hình Chữ Nhật</h1>
+
+<label for="width">Chiều rộng:</label>
+<input type="number" id="width" value="100" min="1"><br>
+
+<label for="height">Chiều dài:</label>
+<input type="number" id="height" value="150" min="1"><br>
+
+<button onclick="updateRectangle()">Cập nhật và Vẽ</button>
+
+<p id="area"></p>
+<p id="perimeter"></p>
+
+<canvas id="myCanvas" width="400" height="300"></canvas>
+
+<script>
+    // Định nghĩa lớp Rectangle
+    class Rectangle {
+        constructor(width, height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        // Phương thức tính diện tích
+        getArea() {
+            return this.width * this.height;
+        }
+
+        // Phương thức tính chu vi
+        getPerimeter() {
+            return 2 * (this.width + this.height);
+        }
+
+        // Phương thức vẽ hình chữ nhật trên canvas
+        draw(context) {
+            context.clearRect(0, 0, 400, 300); // Xóa canvas trước khi vẽ
+            context.fillStyle = "#4CAF50";
+            context.fillRect(50, 50, this.width, this.height);
+        }
+    }
+
+    // Khởi tạo đối tượng Rectangle ban đầu
+    let rectangle = new Rectangle(100, 150);
+
+    // Hàm cập nhật thông tin và vẽ lại hình chữ nhật
+    function updateRectangle() {
+        const width = parseInt(document.getElementById("width").value);
+        const height = parseInt(document.getElementById("height").value);
+
+        // Cập nhật đối tượng Rectangle
+        rectangle = new Rectangle(width, height);
+
+        // In ra diện tích và chu vi
+        document.getElementById("area").textContent =
+            `Diện tích: ${rectangle.getArea()}`;
+        document.getElementById("perimeter").textContent =
+            `Chu vi: ${rectangle.getPerimeter()}`;
+
+        // Vẽ hình chữ nhật
+        const canvas = document.getElementById("myCanvas");
+        const context = canvas.getContext("2d");
+        rectangle.draw(context);
+    }
+
+    // Vẽ hình chữ nhật ban đầu
+    updateRectangle();
+</script>
+
+</body>
+</html>
