@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mèo bắt chuột</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+<h1>Mô phỏng Mèo bắt Chuột</h1>
+<button id="start">Bắt đầu mô phỏng</button>
+<div id="output"></div>
+
+<script>
+  class Rat {
+    constructor(name, weight, speed) {
+      this.name = name;
+      this.weight = weight;
+      this.speed = speed;
+      this.isAlive = true;
+    }
+
+    makeSound() {
+      return `${this.name} kêu: chít, chít`;
+    }
+
+    die() {
+      this.isAlive = false;
+      return `${this.name} đã chết.`;
+    }
+
+    isAlive() {
+      return this.isAlive;
+    }
+
+    getSpeed() {
+      return this.speed;
+    }
+
+    getWeight() {
+      return this.weight;
+    }
+  }
+
+  class Cat {
+    constructor(name, weight, maxSpeed) {
+      this.name = name;
+      this.weight = weight;
+      this.maxSpeed = maxSpeed;
+    }
+
+    makeSound() {
+      return `${this.name} kêu: meo meo`;
+    }
+
+    catchRat(rat) {
+      if (this.maxSpeed > rat.getSpeed()) {
+        return `${this.name} đã bắt được chuột ${rat.name}. ${rat.die()}`;
+      } else {
+        return `${this.name} không đủ nhanh để bắt chuột ${rat.name}.`;
+      }
+    }
+
+    eatRat(rat) {
+      if (rat.isAlive) {
+        return `${this.name} không thể ăn ${rat.name} vì nó vẫn sống.`;
+      } else {
+        this.weight += rat.getWeight();
+        return `${this.name} đã ăn chuột ${rat.name}. Khối lượng hiện tại: ${this.weight.toFixed(2)} kg`;
+      }
+    }
+
+    getWeight() {
+      return this.weight;
+    }
+  }
+
+  document.getElementById('start').addEventListener('click', () => {
+    const cat = new Cat("Mèo Mun", 5.0, 10.0);
+    const rat = new Rat("Chuột Nhắt", 0.5, 5.0);
+
+    let output = '';
+
+    output += cat.makeSound() + '<br>';
+    output += rat.makeSound() + '<br>';
+    output += cat.catchRat(rat) + '<br>';
+    output += cat.eatRat(rat) + '<br>';
+
+    document.getElementById('output').innerHTML = output;
+  });
+</script>
+</body>
+</html>

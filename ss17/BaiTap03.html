@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // Lớp đại diện cho bóng đèn
+  class LightBulb {
+    constructor() {
+      this.isOn = false; // Bóng đèn ban đầu tắt
+    }
+
+    turnOn() {
+      this.isOn = true;
+      console.log("Bóng đèn đã bật.");
+    }
+
+    turnOff() {
+      this.isOn = false;
+      console.log("Bóng đèn đã tắt.");
+    }
+
+    isOn() {
+      return this.isOn;
+    }
+  }
+
+  // Lớp đại diện cho công tắc
+  class Switch {
+    constructor(lightBulb) {
+      this.lightBulb = lightBulb;
+    }
+
+    toggle() {
+      if (this.lightBulb.isOn) {
+        this.lightBulb.turnOff();
+      } else {
+        this.lightBulb.turnOn();
+      }
+    }
+  }
+
+  // Hàm chính để chạy chương trình
+  function main() {
+    const bulb = new LightBulb(); // Khởi tạo bóng đèn
+    const switch1 = new Switch(bulb); // Khởi tạo công tắc và kết nối với bóng đèn
+
+    // Bật tắt công tắc 10 lần
+    for (let i = 0; i < 10; i++) {
+      switch1.toggle(); // Bật/tắt công tắc
+    }
+  }
+
+  // Gọi hàm chính
+  main();
+
+</script>
+</body>
+</html>

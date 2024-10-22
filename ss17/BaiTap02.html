@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor(weight = 10) {
+            this._weight = weight; // Sử dụng thuộc tính riêng để không cho phép thay đổi
+        }
+
+        get weight() {
+            return this._weight;
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        speak(words) {
+            console.log(`${this.name} nói: ${words}`);
+        }
+
+        eatApple(apple) {
+            if (apple.weight > 0) {
+                this.weight += 1;
+                apple._weight -= 1;
+                console.log(`${this.name} đã ăn một miếng táo. Cân nặng hiện tại: ${this.weight} đv.`);
+            } else {
+                console.log(`Không còn táo để ăn!`);
+            }
+        }
+
+        checkAppleWeight(apple) {
+            console.log(`Khối lượng của quả táo: ${apple.weight} đv.`);
+        }
+    }
+
+    function simulateStory() {
+        // Tạo quả táo
+        const apple = new Apple();
+
+        // Tạo Adam và Eva
+        const adam = new Human("Adam", "Nam", 70);
+        const eva = new Human("Eva", "Nữ", 60);
+
+        // Adam và Eva lần lượt ăn táo cho đến khi hết
+        while (apple.weight > 0) {
+            adam.eatApple(apple);
+            adam.checkAppleWeight(apple);
+
+            if (apple.weight > 0) {  // Kiểm tra nếu táo còn
+                eva.eatApple(apple);
+                eva.checkAppleWeight(apple);
+            }
+        }
+    }
+
+    // Bắt đầu mô phỏng câu chuyện
+    simulateStory();
+
+</script>
+</body>
+</html>
