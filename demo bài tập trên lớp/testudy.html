@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách công việc</title>
+    <style>
+        .form-control{
+            display: flex;
+        }
+        #content {
+            padding: 5px;
+            height: 45px;
+            width: 495px;
+            resize: none;
+        }
+        .form-control button {
+            height: 57px;
+            line-height: 45px;
+            border: none;
+            padding: 5px;
+            background: #ccc;
+            text-align: center;
+            width: 87px;
+            margin-left: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #list-task {
+            width: 600px;
+        }
+        #list-task h4 {
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+        #list-task ul {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+        }
+        #list-task ul li {
+            display: flex;
+            background: #f1f1f1;
+            padding: 5px;
+            margin-bottom: 5px;
+            justify-content: space-around;
+        }
+        #list-task ul li div {
+            width: 80%;
+
+        }
+        #list-task ul li a {
+            text-decoration: none;
+            display: block;
+            margin-right: 8px;
+            color: #333333;
+            padding: 5px;
+        }
+        #list-task ul li a:nth-of-type(2) {
+            background: red;
+            color: #dddddd;
+            border-radius: 5px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="form-control">
+    <textarea class="content" id="content" placeholder="Nhập công việc cần làm!"></textarea>
+    <button>Lưu</button>
+
+</div>
+<div id="list-task">
+    <h4>Danh sách công việc cần làm</h4>
+    <div id="result">
+        <p>Chưa có công việc nào!...</p>
+    </div>
+</div>
+
+<script>
+    let btnAddTaskEl = document.querySelector('button');
+    let taskNameEl = document.querySelector('#content');
+
+    let tasks = []; // Khởi tạo mảng nhiệm vụ rỗng
+
+    renderTasks(tasks);
+
+    btnAddTaskEl.addEventListener('click', function() {
+        if (!taskNameEl.value) {
+            alert('Vui lòng nhập tên công việc');
+            return false;
+        }
+
+        let taskId = this.getAttribute('id');
+        let task = { name: taskNameEl.value, completed: false }; // Thêm thuộc tính completed
+
+        if (taskId === '0' || taskId) {
+            tasks[taskId] = task;
+            this.removeAttribute('id');
+        } else {
+            tasks.push(task);
+        }
+
+        taskNameEl.value = '';
+        renderTasks(tasks);
+    });
+
+    // Hàm edit
+    function editTasks(id) {
+        if (tasks.length > 0) {
+            taskNameEl.value = tasks[id].name;
+            btnAddTaskEl.setAttribute('id', id);
+        }
+    }
+
+    // Hàm xoá
+    function deleteTasks(id) {
+        if (confirm('Bạn có chắc chắn muốn xoá ?')) {
+            alert('Xoá thành công');
+            tasks.splice(id, 1);
+            renderTasks(tasks);
+        }
+    }
+
+    // Hàm lưu checkbox
+    function toggleCompletion(id) {
+        tasks[id].completed = !tasks[id].completed;
+        renderTasks(tasks);
+    }
+
+    // Hàm render nhiệm vụ
+    function renderTasks(tasks = []) {
+        let content = '<ul>';
+        tasks.forEach((task, index) => {
+            content += `<li>
+                    <div class="task-name">${index + 1}. ${task.name}</div>
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} onclick="toggleCompletion(${index})">
+                    <a href="#" onclick="editTasks(${index})">Sửa</a>
+                    <a href="#" onclick="deleteTasks(${index})">Xoá</a>
+                </li>`;
+        });
+        content += '</ul>';
+        document.querySelector('#result').innerHTML = content;
+    }
+
+</script>
+</body>
+</html>

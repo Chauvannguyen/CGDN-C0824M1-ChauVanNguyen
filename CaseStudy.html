@@ -2,110 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Danh sách công việc</title>
+  <style>
+    .form-control{
+      display: flex;
+    }
+    #content {
+      padding: 5px;
+      height: 45px;
+      width: 495px;
+      resize: none;
+    }
+    .form-control button {
+      height: 57px;
+      line-height: 45px;
+      border: none;
+      padding: 5px;
+      background: #ccc;
+      text-align: center;
+      width: 87px;
+      margin-left: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #list-task {
+      width: 600px;
+    }
+    #list-task h4 {
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+    #list-task ul {
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+    }
+    #list-task ul li {
+      display: flex;
+      background: #f1f1f1;
+      padding: 5px;
+      margin-bottom: 5px;
+      justify-content: space-around;
+    }
+    #list-task ul li div {
+      width: 80%;
+
+    }
+    #list-task ul li a {
+      text-decoration: none;
+      display: block;
+      margin-right: 8px;
+      color: #333333;
+      padding: 5px;
+    }
+    #list-task ul li a:nth-of-type(2) {
+      background: red;
+      color: #dddddd;
+      border-radius: 5px;
+
+    }
+  </style>
 </head>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-
-  .form-container {
-    width: 1000px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
-
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: border-color 0.3s;
-  }
-
-  .form-group input:focus {
-    border-color: #28a745;
-    outline: none;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  button:hover {
-    background-color: #218838;
-  }
-</style>
-
 <body>
-<div class="form-container">
-  <h2>Nhập Thông Tin</h2>
-  <div class="form-group">
-    <label for="Mã Sinh Viên"> Mã Sinh Viên</label>
-    <input type="text" id="Mã Sinh Viên" placeholder="Mã Sinh Viên">
+<div class="form-control">
+  <textarea class="content" id="content" placeholder="Nhập công việc cần làm!"></textarea>
+  <button>Lưu</button>
+
+</div>
+<div id="list-task">
+  <h4>Danh sách công việc cần làm</h4>
+  <div id="result">
+    <p>Chưa có công việc nào!...</p>
   </div>
-  <div class="form-group">
-    <label for="input2">Input 2</label>
-    <input type="text" id="input2" placeholder="Nhập giá trị...">
-  </div>
-  <div class="form-group">
-    <label for="input3">Input 3</label>
-    <input type="text" id="input3" placeholder="Nhập giá trị...">
-  </div>
-  <div class="form-group">
-    <label for="input4">Input 4</label>
-    <input type="text" id="input4" placeholder="Nhập giá trị...">
-  </div>
-  <div class="form-group">
-    <label for="input5">Input 5</label>
-    <input type="text" id="input5" placeholder="Nhập giá trị...">
-  </div>
-  <div class="form-group">
-    <label for="input6">Input 6</label>
-    <input type="text" id="input6" placeholder="Nhập giá trị...">
-  </div>
-  <div class="form-group">
-    <label for="input7">Input 7</label>
-    <input type="text" id="input7" placeholder="Nhập giá trị...">
-  </div>
-  <div class="form-group">
-    <label for="input8">Input 8</label>
-    <input type="text" id="input8" placeholder="Nhập giá trị...">
-  </div>
-  <button type="submit">Gửi</button>
 </div>
 
+<script>
+  let btnAddTaskEl = document.querySelector('button')
+  let taskNameEl = document.querySelector('#content')
 
+  let tasks = []; // khởi tạo mảng rỗng
+
+  renderTasks(tasks)
+
+  btnAddTaskEl.addEventListener('click', function() {
+    if (!taskNameEl.value) {
+      alert('Vui lòng nhập tên công việc')
+      return false;
+    }
+
+    let taskId = this.getAttribute('id')
+    let task = { name: taskNameEl.value }
+
+    if (taskId === '0' || taskId) {
+      tasks[taskId] = task
+      this.removeAttribute('id')
+    } else {
+      tasks.push(task)
+    }
+    taskNameEl.value = '';
+    renderTasks(tasks)
+  })
+
+  // hàm edit
+  function editTasks(id) {
+    if (tasks.length > 0) {
+      taskNameEl.value = tasks[id].name
+      btnAddTaskEl.setAttribute('id', id)
+    }
+  }
+
+  // hàm xoá
+  function deleteTasks(id) {
+    if (confirm('Bạn có chắc chắn muốn xoá ?')) {
+      alert('Xoá thành công');
+      tasks.splice(id, 1);
+      renderTasks(tasks);
+    }
+  }
+
+
+  function renderTasks(tasks = []) {
+    let content = '<ul>';
+    tasks.forEach((task, index) => {
+      content += `<li>
+                    <div class="task-name"> ${index + 1}. ${task.name} </div>
+                    <input type="checkbox">
+                    <a href="#" onclick="editTasks(${index})">Sửa</a>
+                    <a href="#" onclick="deleteTasks(${index})">Xoá</a>
+                </li>`;
+    });
+    content += '</ul>';
+    document.querySelector('#result').innerHTML = content;
+  }
+</script>
 </body>
 </html>

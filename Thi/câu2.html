@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+      function diemNhapVao() {
+        const input = prompt("Nhập điểm của học viên (0-100)");
+        const grade = parseInt(input);
+
+        if (isNaN(grade) || grade < 0 || grade > 100) {
+          alert("Nhập số điểm nằm trong khoảng 0 - 100:");
+          return;
+        }
+      }
+      diemNhapVao();
+    </script>
+</body>
+</html>

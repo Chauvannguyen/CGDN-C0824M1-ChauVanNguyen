@@ -1,69 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Khách Hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #e9ecef;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-        <script>
-            // function findNthLargest(arr, n) {
-            //     let uniqueArr = [...new Set(arr)];
-            //     uniqueArr.sort((a,b) => b - a);
-            //     if (n > uniqueArr.length) {
-            //         return -1;
-            //     }
-            //     return uniqueArr[n -1];
-            // }
-            //
-            // let scores = [3, 7, 9, 8, 7, 4, 2];
-            // let n = parseInt(prompt("Nhập số hạng cần tìm: "));
-            // let result = findNthLargest(scores, n);
-            //
-            // if (result !== -1) {
-            //     document.write(`Số lớn thứ ${n} trong mảng là : ${result}`);
-            // } else {
-            //     document.write("Không có giá trị thoả mãn.");
-            // }
+<div class="container">
+    <h1>Quản Lý Khách Hàng</h1>
+    <form id="customerForm">
+        <input type="text" id="customerId" placeholder="Mã khách hàng">
+        <input type="text" id="customerName" placeholder="Tên khách hàng">
+        <input type="text" id="customerPhone" placeholder="Số điện thoại">
+        <input type="text" id="customerAddress" placeholder="Địa chỉ">
+        <input type="email" id="customerEmail" placeholder="Email">
+        <button type="submit">Thêm Khách Hàng</button>
+    </form>
+    <button id="showCustomers">Hiển Thị Danh Sách Khách Hàng</button>
+    <h2>Danh Sách Khách Hàng</h2>
+    <ul id="customerList"></ul>
+</div>
+<script>
+    class Customer {
+        constructor(id, name, phone, address, email) {
+            this.id = id;
+            this.name = name;
+            this.phone = phone;
+            this.address = address;
+            this.email = email;
+        }
+    }
 
-            function isBeautifulArray(arr) {
-                let totalSum = arr.reduce((acc, num) => acc + num, 0); // Tổng toàn bộ mảng
-                let leftSum = 0; // Khởi tạo tổng bên trái
+    const customers = [];
 
-                // Duyệt qua từng phần tử trong mảng
-                for (let i = 0; i < arr.length; i++) {
-                    let rightSum = totalSum - leftSum - arr[i]; // Tổng bên phải
+    document.getElementById('customerForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Ngăn chặn form gửi đi
 
-                    // Nếu tổng bên trái và bên phải bằng nhau, đây là mảng "đẹp"
-                    if (leftSum === rightSum) {
-                        return true;
-                    }
+        // Lấy dữ liệu từ form
+        const id = document.getElementById('customerId').value;
+        const name = document.getElementById('customerName').value;
+        const phone = document.getElementById('customerPhone').value;
+        const address = document.getElementById('customerAddress').value;
+        const email = document.getElementById('customerEmail').value;
 
-                    // Cập nhật tổng bên trái cho lần lặp tiếp theo
-                    leftSum += arr[i];
-                }
+        // Tạo đối tượng khách hàng mới
+        const newCustomer = new Customer(id, name, phone, address, email);
+        customers.push(newCustomer); // Thêm khách hàng vào danh sách
 
-                // Nếu không tìm thấy phần tử đặc biệt, trả về false
-                return false;
-            }
+        // Cập nhật danh sách khách hàng
+        displayCustomers();
 
-            // Hàm nhập mảng từ người dùng
-            function inputArray() {
-                let input = prompt("Nhập các phần tử của mảng, cách nhau bởi dấu phẩy:");
-                let arr = input.split(",").map(Number); // Chuyển chuỗi nhập vào thành mảng số
-                return arr;
-            }
+        // Reset form
+        this.reset();
+    });
 
-            // Chương trình chính
-            let arr = inputArray();
-            let result = isBeautifulArray(arr);
+    function displayCustomers() {
+        const customerList = document.getElementById('customerList');
+        customerList.innerHTML = ''; // Xóa danh sách hiện tại
 
-            if (result) {
-                alert("Đây là mảng đẹp!");
-            } else {
-                alert("Đây không phải là mảng đẹp.");
-            }
+        // Hiển thị từng khách hàng trong danh sách
+        customers.forEach(customer => {
+            const li = document.createElement('li');
+            li.textContent = `Mã: ${customer.id}, Tên: ${customer.name}, SĐT: ${customer.phone}, Địa chỉ: ${customer.address}, Email: ${customer.email}`;
+            customerList.appendChild(li);
+        });
+    }
 
+    document.getElementById('showCustomers').addEventListener('click', function() {
+        const newWindow = window.open('', '', 'width=600,height=400');
+        newWindow.document.write('<h1>Danh Sách Khách Hàng</h1>');
+        newWindow.document.write('<ul>');
 
-        </script>
+        customers.forEach(customer => {
+            newWindow.document.write(`<li>Mã: ${customer.id}, Tên: ${customer.name}, SĐT: ${customer.phone}, Địa chỉ: ${customer.address}, Email: ${customer.email}</li>`);
+        });
+
+        newWindow.document.write('</ul>');
+        newWindow.document.close();
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+            function boiChung3And5(arr) {
+                return arr.filter(num => num % 3 === 0 && num % 5 === 0);
+            }
+
+            function main() {
+                const arr = [];
+                const n = parseInt(prompt("Nhập số lượng phần tử trong mảng (không quá 20):"));
+
+                if (n > 20) {
+                    alert("Số lượng phần tử không được vượt quá 20!");
+                    return;
+                }
+
+                for (let i = 0; i < n; i++) {
+                    const num = parseInt(prompt(`Nhập phần tử thứ ${i + 1}:`));
+                    arr.push(num);
+                }
+
+                const multiples = boiChung3And5(arr);
+
+                const totalSum = multiples.reduce((sum, num) => sum + num, 0);
+
+                alert("Mảng được nhập vào: " + arr.join(", "));
+                alert("Các số bội chung của 3 và 5: " + multiples.join(", "));
+                alert("Tổng các số đó: " + totalSum);
+            }
+
+            main();
+        </script>
+</body>
+</html>
+
