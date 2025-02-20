@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 1</title>
+</head>
+<body>
+<ul>
+  <li>Inline: Nhúng trực tiếp vào thuộc tính HTML</li>
+  <li>Internal: Nhúng trực tiếp trong thẻ script trong cùng file HTML</li>
+  <li>External: Nhúng từ file js bên ngoài</li>
+</ul>
+<button onclick="alert('hello 1')">Inline</button>
+<button id="btn2">Internal</button>
+<button id="btn3">External</button>
+<script>
+  document.getElementById("btn2").addEventListener("click", function(){
+    alert('hello 2') })
+</script>
+<script src="main.js"></script>
+
+</body>
+</html>

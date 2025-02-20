@@ -1,18 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "IPhone 12",
-      "price": "20000000",
-      "description": "Iphone 12 mới 100%"
-    },
-    {
-      "id": 2,
-      "title": "IPhone 13 Pro",
-      "price": "25600000",
-      "description": "Iphone 12 like new 99%"
-    },
-    {
       "id": 3,
       "title": "Samsung Galaxy Ultra 22",
       "price": "32000000",
@@ -23,6 +11,84 @@
       "title": "IPad Mini",
       "price": "12000000",
       "description": "Sản phẩm phù hợp với học sinh, sinh viên"
-    }
+    },
+    {
+      "id": 5,
+      "title": "IPhone 12",
+      "price": "20000000",
+      "description": "Iphone 12 mới 100%"
+    },
+    {
+      "id": 1,
+      "title": "IPhone 120000",
+      "price": "20000000",
+      "description": "Iphone 12 mới 100%"
+    },
+    {
+      "id": 10,
+      "title": "IPhone 120000",
+      "price": "20000000",
+      "description": "Iphone 12 mới 100%"
+    },
+    [
+      {
+        "id": 12,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      },
+      {
+        "id": 13,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      }
+    ],
+    [
+      {
+        "id": 14,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      },
+      {
+        "id": 15,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      },
+      {
+        "id": 16,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      }
+    ],
+    [
+      {
+        "id": 18,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      },
+      {
+        "id": 19,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      },
+      {
+        "id": 17,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      },
+      {
+        "id": 26,
+        "title": "IPhone 120000",
+        "price": "20000000",
+        "description": "Iphone 12 mới 100%"
+      }
+    ]
   ]
 }
