@@ -1,59 +1,80 @@
-import { useState } from "react";
+import React, { Component } from "react";
 import "./App.css";
 
-function App() {
-    const [todos, setTodos] = useState([]);
-    const [text, setText] = useState("");
+class TodoApp extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            todos: [],
+            text: "",
+        };
+    }
 
-    const addTodo = (e) => {
-        e.preventDefault();
-        if (text.trim()) {
-            setTodos([...todos, { id: Date.now(), text, completed: false }]);
-            setText("");
+    handleChange = (event) => {
+        this.setState({ text: event.target.value });
+    };
+
+    addTodo = (event) => {
+        event.preventDefault();
+        if (this.state.text.trim()) {
+            const newTodo = {
+                id: Date.now(),
+                text: this.state.text,
+                completed: false,
+            };
+            this.setState((prevState) => ({
+                todos: [...prevState.todos, newTodo],
+                text: "",
+            }));
         }
     };
 
-    const toggleTodo = (id) => {
-        setTodos(
-            todos.map((todo) =>
+    toggleTodo = (id) => {
+        this.setState((prevState) => ({
+            todos: prevState.todos.map((todo) =>
                 todo.id === id ? { ...todo, completed: !todo.completed } : todo
-            )
+            ),
+        }));
+    };
+
+    deleteTodo = (id) => {
+        this.setState((prevState) => ({
+            todos: prevState.todos.filter((todo) => todo.id !== id),
+        }));
+    };
+
+    render() {
+        return (
+            <div className="container">
+                <h1>Todo App</h1>
+                <form onSubmit={this.addTodo}>
+                    <input
+                        type="text"
+                        value={this.state.text}
+                        onChange={this.handleChange}
+                        placeholder="Nhập công việc..."
+                        className="input"
+                    />
+                    <button type="submit" className="button">Thêm</button>
+                </form>
+                <ul className="list">
+                    {this.state.todos.map((todo) => (
+                        <li key={todo.id} className="item">
+                            <input
+                                type="checkbox"
+                                checked={todo.completed}
+                                onChange={() => this.toggleTodo(todo.id)}
+                            />
+                            <span style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
+                {todo.text}
+              </span>
+                            <button onClick={() => this.deleteTodo(todo.id)} className="deleteButton">Xóa</button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         );
-    };
-
-    const deleteTodo = (id) => {
-        setTodos(todos.filter((todo) => todo.id !== id));
-    };
-
-    return (
-        <div>
-            <h1>Todo App</h1>
-            <form onSubmit={addTodo}>
-                <input
-                    type="text"
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    placeholder="Nhập công việc..."
-                />
-                <button type="submit">Thêm</button>
-            </form>
-            <ul>
-                {todos.map((todo) => (
-                    <li key={todo.id}>
-                        <input
-                            type="checkbox"
-                            checked={todo.completed}
-                            onChange={() => toggleTodo(todo.id)}
-                        />
-                        <span style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
-              {todo.text}
-            </span>
-                        <button onClick={() => deleteTodo(todo.id)}>Xóa</button>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+    }
 }
 
-export default App;
+export default TodoApp;
