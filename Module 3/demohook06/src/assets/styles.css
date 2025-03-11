@@ -1,0 +1,156 @@
+// src/App.js
+       import React, { useState } from 'react';
+import TodoForm from './components/TodoForm';
+import TodoItem from './components/TodoItem';
+import Header from './layout/Header';
+import Footer from './layout/Footer';
+import './assets/styles.css';
+
+function App() {
+const [todos, setTodos] = useState([
+{ id: 1, text: 'Học React' },
+{ id: 2, text: 'Làm bài tập CodeGym' },
+{ id: 3, text: 'Xem phim thư giãn' }
+]);
+
+// Hàm thêm công việc
+const addTodo = (text) => {
+setTodos([...todos, { id: Date.now(), text }]);
+};
+
+// Hàm xoá công việc
+const deleteTodo = (id) => {
+setTodos(todos.filter(todo => todo.id !== id));
+};
+
+    return (
+    <>
+    <Header />
+    <main>
+    <TodoForm addTodo={addTodo} />
+{todos.length === 0 ? (
+<p className="no-data">No data.</p>
+) : (
+<div className="container">
+{todos.map(todo => (
+<TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
+))}
+</div>
+)}
+</main>
+<Footer />
+</>
+);
+}
+
+export default App;
+
+// src/components/TodoItem.js
+   import React from 'react';
+import './TodoItem.css';
+
+function TodoItem({ todo, deleteTodo }) {
+    return (
+    <div className="todo-item">
+    <span className="todo-text">{todo.text}</span>
+<button onClick={() => deleteTodo(todo.id)} className="delete-button">
+🗑 Xoá
+</button>
+</div>
+);
+}
+
+export default TodoItem;
+
+// src/components/TodoForm.js
+   import React, { useState } from 'react';
+import './TodoForm.css';
+
+function TodoForm({ addTodo }) {
+const [text, setText] = useState('');
+
+    const handleSubmit = (e) => {
+e.preventDefault();
+    if (!text.trim()) return;
+addTodo(text);
+setText('');
+};
+
+    return (
+    <form onSubmit={handleSubmit} className="todo-form">
+<input
+type="text"
+value={text}
+    onChange={(e) => setText(e.target.value)}
+    placeholder="Nhập công việc..."
+    className="todo-input"
+    />
+    <button type="submit" className="add-button">Thêm</button>
+    </form>
+);
+}
+
+export default TodoForm;
+
+// src/assets/styles.css
+   .container {
+       width: 50%;
+       margin: auto;
+       text-align: center;
+   }
+
+.no-data {
+    color: gray;
+    font-style: italic;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.todo-text {
+    flex: 1;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-button:hover {
+    background-color: darkgreen;
+}

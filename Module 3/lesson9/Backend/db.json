@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Tommy",
+      "email": "tommy@gmail.com",
+      "age": 50,
+      "address": "123acv"
+    },
+    {
+      "id": 2,
+      "name": "Jennie",
+      "email": "jennie@gmail.com",
+      "age": 26,
+      "address": "123acv"
+    },
+    {
+      "id": 3,
+      "name": "Harry",
+      "email": "harry@gmail.com",
+      "age": 27,
+      "address": "123acv"
+    },
+    {
+      "id": 4,
+      "name": "Beck",
+      "email": "beck@gmail.com",
+      "age": 20,
+      "address": "123acv"
+    },
+    {
+      "id": 5,
+      "name": "Ben",
+      "email": "ben@gmail.com",
+      "age": 20,
+      "address": "123acv"
+    },
+    {
+      "id": 6,
+      "name": "nguyen123",
+      "email": "nguyen@gmail.com",
+      "age": 20,
+      "address": "123acv"
+    }
+  ]
+}
