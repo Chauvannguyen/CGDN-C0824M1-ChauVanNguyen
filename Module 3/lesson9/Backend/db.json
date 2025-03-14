@@ -41,6 +41,34 @@
       "email": "nguyen@gmail.com",
       "age": 20,
       "address": "123acv"
+    },
+    {
+      "name": "nguyrnnn",
+      "id": 7
+    },
+    {
+      "name": "study",
+      "email": "nguyencvpd10794@gmail.com",
+      "age": 19,
+      "address": "2222",
+      "avatar": "https://images.pexels.com/photos/21787/pexels-photo.jpg?cs=srgb&dl=pexels-umaraffan499-21787.jpg&fm=jpg",
+      "id": 8
+    },
+    {
+      "name": "ry",
+      "email": "ry4444@gmail.com",
+      "age": 99,
+      "address": "đâu cũng ok",
+      "avatar": "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/483067358_1939345146872091_4507386616289704702_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_ohc=dNdnG3LC01UQ7kNvgFpDf-8&_nc_oc=Adhg0kmvb2yW9c9lzFR0P8TB_37s7OfKFhlQUjkofYpTJP-8V6fFXF74Flpm4NVjGs4&_nc_zt=24&_nc_ht=scontent.fdad3-4.fna&_nc_gid=AZA3mnmnk6S5IW9s0_9MXw9&oh=00_AYGi7OK3h-YhPZb3XuipSQVFM51SBGNoxkZJRKqHuvrXjw&oe=67D91F85",
+      "id": 9
+    },
+    {
+      "name": "gâu gâu",
+      "email": "gau@gamil.com",
+      "age": 18,
+      "address": "bạn ry",
+      "avatar": "https://vcdn1-vnexpress.vnecdn.net/2016/12/08/3-1481000513407-1169-1481203522.png?w=460&h=0&q=100&dpr=2&fit=crop&s=C3BzD1OMs8P0FY_okpmlgw",
+      "id": 10
     }
   ]
 }

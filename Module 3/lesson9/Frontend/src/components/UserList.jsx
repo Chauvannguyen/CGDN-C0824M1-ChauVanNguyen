@@ -83,17 +83,6 @@ const UserList = () => {
                                 >
                                     View
                                 </button>
-
-                                {/*<ul>*/}
-                                {/*    {users.map((user) => (*/}
-                                {/*        <li key={user.id}>*/}
-                                {/*            <Link to={`/users/${user.id}`}>*/}
-                                {/*                <button>Xem chi tiết</button>*/}
-                                {/*            </Link>*/}
-                                {/*        </li>*/}
-                                {/*    ))}*/}
-                                {/*</ul>*/}
-
                             </td>
                         </tr>
                     ))}
