@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Chau Van Nguyen",
+      "email": "Nguyen@gmail.com",
+      "age": 20,
+      "address": "88 Nguyen Binh",
+      "avatar": "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/483067358_1939345146872091_4507386616289704702_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_ohc=dNdnG3LC01UQ7kNvgFpDf-8&_nc_oc=Adhg0kmvb2yW9c9lzFR0P8TB_37s7OfKFhlQUjkofYpTJP-8V6fFXF74Flpm4NVjGs4&_nc_zt=24&_nc_ht=scontent.fdad3-4.fna&_nc_gid=AZA3mnmnk6S5IW9s0_9MXw9&oh=00_AYGi7OK3h-YhPZb3XuipSQVFM51SBGNoxkZJRKqHuvrXjw&oe=67D91F85"
+    },
+    {
+      "id": 2,
+      "name": "Chau Van Nguyen2",
+      "email": "Nguyen2@gmail.com",
+      "age": 20,
+      "address": "88 Nguyen Binh",
+      "avatar": "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/483067358_1939345146872091_4507386616289704702_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_ohc=dNdnG3LC01UQ7kNvgFpDf-8&_nc_oc=Adhg0kmvb2yW9c9lzFR0P8TB_37s7OfKFhlQUjkofYpTJP-8V6fFXF74Flpm4NVjGs4&_nc_zt=24&_nc_ht=scontent.fdad3-4.fna&_nc_gid=AZA3mnmnk6S5IW9s0_9MXw9&oh=00_AYGi7OK3h-YhPZb3XuipSQVFM51SBGNoxkZJRKqHuvrXjw&oe=67D91F85"
+    },
+    {
+      "id": 3,
+      "name": "Chau Van Nguyen3",
+      "email": "Nguyen3@gmail.com",
+      "age": 20,
+      "address": "88 Nguyen Binh",
+      "avatar": "https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-1/483067358_1939345146872091_4507386616289704702_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_ohc=dNdnG3LC01UQ7kNvgFpDf-8&_nc_oc=Adhg0kmvb2yW9c9lzFR0P8TB_37s7OfKFhlQUjkofYpTJP-8V6fFXF74Flpm4NVjGs4&_nc_zt=24&_nc_ht=scontent.fdad3-4.fna&_nc_gid=AZA3mnmnk6S5IW9s0_9MXw9&oh=00_AYGi7OK3h-YhPZb3XuipSQVFM51SBGNoxkZJRKqHuvrXjw&oe=67D91F85"
+    }
+  ]
+}
